@@ -7,7 +7,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#0a0c10" />
   <meta name="description" content="Elite athlete training readiness assessment. Score your recovery from sleep, HRV, stress and more." />
-  <title>Aether · Training Readiness</title>
+  <title>Readiness Assessment</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23070a12'/><circle cx='50' cy='50' r='28' fill='none' stroke='%233d8bfd' stroke-width='8'/><circle cx='50' cy='50' r='12' fill='%233d8bfd'/></svg>" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23070a12'/><circle cx='50' cy='50' r='28' fill='none' stroke='%233d8bfd' stroke-width='8'/><circle cx='50' cy='50' r='12' fill='%233d8bfd'/></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
@@ -95,30 +97,11 @@
       gap: 10px;
     }
 
-    .logo-mark {
-      width: 32px;
-      height: 32px;
-      border-radius: 9px;
-      background: linear-gradient(135deg, #3d8bfd, #6366f1);
-      display: grid;
-      place-items: center;
-      font-weight: 800;
-      font-size: 14px;
-      letter-spacing: -0.5px;
-      box-shadow: 0 4px 16px rgba(61,139,253,0.35);
-    }
-
     .logo-text {
       font-weight: 700;
       font-size: 17px;
       letter-spacing: -0.3px;
-    }
-
-    .logo-text span {
-      color: var(--text-secondary);
-      font-weight: 500;
-      font-size: 13px;
-      margin-left: 6px;
+      color: var(--text);
     }
 
     .header-actions {
@@ -230,7 +213,6 @@
       transition: all 0.2s ease;
       font-family: var(--font);
       width: 100%;
-      max-width: 320px;
     }
 
     .btn-primary {
@@ -248,7 +230,6 @@
       background: var(--bg-card);
       color: var(--text);
       border: 1px solid var(--border-strong);
-      margin-top: 12px;
     }
 
     .btn-secondary:active {
@@ -263,6 +244,21 @@
       padding: 12px;
       font-size: 14px;
       width: auto;
+      max-width: none;
+    }
+
+    .cta-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    .cta-group .btn {
+      width: 100%;
     }
 
     .features {
@@ -842,8 +838,7 @@
     <!-- Header -->
     <header class="header">
       <div class="logo">
-        <div class="logo-mark">A</div>
-        <div class="logo-text">Aether <span>Readiness</span></div>
+        <div class="logo-text">Readiness Assessment</div>
       </div>
       <div class="header-actions">
         <button class="icon-btn" id="infoBtn" aria-label="How it works" title="How scoring works">
@@ -868,11 +863,13 @@
         </div>
         <h1>Know if your body<br>is <em>ready</em> today</h1>
         <p>Science-backed readiness score from sleep, HRV, stress, soreness & more. Get clear guidance in under 60 seconds.</p>
-        <button class="btn btn-primary" id="startBtn">
-          Start Assessment
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
-        <button class="btn btn-secondary" id="viewLastBtn" style="display:none">View Last Score</button>
+        <div class="cta-group">
+          <button class="btn btn-primary" id="startBtn">
+            Start Assessment
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <button class="btn btn-secondary" id="viewLastBtn" style="display:none">View Last Score</button>
+        </div>
 
         <div class="features">
           <div class="feature">
@@ -945,8 +942,10 @@
         <ul id="tipsList"></ul>
       </div>
 
-      <button class="btn btn-primary" id="retakeBtn">New Assessment</button>
-      <button class="btn btn-ghost" id="homeBtn">Back to Home</button>
+      <div class="cta-group" style="margin-top:8px">
+        <button class="btn btn-primary" id="retakeBtn">New Assessment</button>
+        <button class="btn btn-ghost" id="homeBtn">Back to Home</button>
+      </div>
     </section>
 
     <!-- HISTORY SCREEN -->
@@ -956,8 +955,10 @@
         <p style="font-size:14px;color:var(--text-secondary)">Your last 14 assessments</p>
       </div>
       <div class="history-list" id="historyList"></div>
-      <button class="btn btn-secondary" id="clearHistoryBtn" style="margin-top:20px">Clear History</button>
-      <button class="btn btn-ghost" id="historyBackBtn">Back</button>
+      <div class="cta-group" style="margin-top:20px">
+        <button class="btn btn-secondary" id="clearHistoryBtn">Clear History</button>
+        <button class="btn btn-ghost" id="historyBackBtn">Back</button>
+      </div>
     </section>
   </div>
 
@@ -966,7 +967,7 @@
     <div class="modal">
       <div class="modal-handle"></div>
       <h2>How Readiness is Calculated</h2>
-      <p>Aether synthesizes eight key signals into a single 0–100 score that answers: “Is today a good day to push?”</p>
+      <p>This assessment synthesizes eight key signals into a single 0–100 score that answers: “Is today a good day to push?”</p>
       
       <h3>Factor Weights</h3>
       <div class="weight-list">
@@ -990,7 +991,9 @@
       </div>
 
       <p style="margin-top:20px;font-size:13px;color:var(--text-muted)">Based on principles used by systems like Garmin Training Readiness, Oura, and WHOOP, combined with validated wellness questionnaires. Individual baselines improve accuracy over time.</p>
-      <button class="btn btn-primary" id="closeInfoBtn" style="margin-top:20px">Got it</button>
+      <div class="cta-group" style="margin-top:20px">
+        <button class="btn btn-primary" id="closeInfoBtn">Got it</button>
+      </div>
     </div>
   </div>
 
@@ -1025,13 +1028,14 @@
         id: 'hrv',
         type: 'options',
         title: 'HRV / Recovery status?',
-        desc: 'From wearable or relative to your baseline',
+        desc: 'From wearable or relative to your baseline. Choose Unsure if you can’t measure it.',
         options: [
           { value: 1, label: 'Much Below Baseline', sub: 'Significantly lower than normal' },
           { value: 2, label: 'Below Baseline', sub: 'Noticeably lower' },
           { value: 3, label: 'Near Baseline', sub: 'Typical for you' },
           { value: 4, label: 'Above Baseline', sub: 'Better than average' },
-          { value: 5, label: 'Well Above Baseline', sub: 'Excellent recovery signal' }
+          { value: 5, label: 'Well Above Baseline', sub: 'Excellent recovery signal' },
+          { value: 3, label: 'Unsure / Can’t Measure', sub: 'No wearable or unknown — treated as neutral' }
         ],
         weight: 0.20
       },
